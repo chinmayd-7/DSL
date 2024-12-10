@@ -1,8 +1,9 @@
 print("Enter no. of students in class")
 a=int(input())
 U=[]
-A=[]
-B=[]
+Cricket=[]
+Badminton=[]
+Football=[]
 print("Enter roll no. of students in class")
 for i in range(a):
     U.append(int(input()))
@@ -11,14 +12,26 @@ print("Enter no. of students who play cricket")
 cric=int(input())
 print("Enter roll no. of students who play cricket")
 for i in range(cric):
-    A.append(int(input()))
+    Cricket.append(int(input()))
 
 print("Enter no. of students who play badminton")
 badm=int(input())
 print("Enter roll no. of students who play Badminton")
 for i in range(badm):
-    B.append(int(input()))
+    Badminton.append(int(input()))
 
+print("Enter no. of students who play football")
+foot=int(input())
+print("Enter roll no. of students who play football")
+for i in range(foot):
+    Football.append(int(input()))
+
+def inter_fun(A,B):
+    for i in A:
+        if i in B:
+            print(i)
+
+#optional
 union_set=[]
 def union_fun(A,B):
     for i in A:
@@ -28,66 +41,11 @@ def union_fun(A,B):
         if i not in A:
             print(i)
             union_set.append(i)
-    # print(union_set)
-    # i=0
-    # j=0
-    # while(i<len(A) and j<len(B)):
-    #     if(A[i]<B[j]):
-    #         print(A[i],end=',')
-    #         union_set.append(A[i])
-    #         i+=1
-    #     elif(A[i]>B[j]):
-    #         print(B[j],end=',')
-    #         union_set.append(B[j])
-    #         j+=1
-    #     else:
-    #         print(A[i],end=',')
-    #         union_set.append(A[i])
-    #         i+=1
-    #         j+=1
-    # if(i==len(A)):
-    #     while(j<len(B)):
-    #         print(B[j],end=',')
-    #         union_set.append(B[j])
-    #         j+=1
-    # elif(j==len(B)):
-    #     while(i<len(A)):
-    #         print(A[i],end=',')
-    #         union_set.append(A[i])
-    #         i+=1
-
+#optional
 def diff_fun(A,B):
     for i in A:
         if i not in B:
             print(i)
-    # i=0
-    # j=0
-    # for i in range(len(A)):
-    #     flag=1
-    #     for j in range(len(B)):
-    #         if (A[i]==B[j]):
-    #             flag=0
-    #     if flag==1:
-    #         print(A[i],end=',')
-
-def inter_fun(A,B):
-    for i in A:
-        if i in B:
-            print(i)
-    # i=0
-    # j=0
-    # while(i<len(A) and j<len(B)):
-    #     if(A[i]<B[j]):
-    #         # print(A[i],end=',')
-    #         i+=1
-    #     elif(A[i]>B[j]):
-    #         # print(B[j],end=',')
-    #         j+=1
-    #     else:
-    #         print(A[i],end=',')
-    #         i+=1
-    #         j+=1
-
 
 def symm_diff(A,B):
     for i in A:
@@ -97,24 +55,34 @@ def symm_diff(A,B):
         if i not in A:
             print(i,end=',')
 
-print("Students who play either crickett or badminton or both:")
-union_fun(A,B)
+def neither_A_nor_B(A,B):
+    cnt=0
+    for i in U:
+        if i not in A and i not in B:
+            cnt+=1
+    print(cnt)
+
+def A_and_B_not_C(A,B,C):
+    cnt=0
+    for i in A:
+        if i in B and i not in C:
+            cnt+=1
+    print(cnt)
+
+print("play both cricket and badminton")
+inter_fun(Cricket,Badminton)
 print()
-print("Students who play only cricket:")
-diff_fun(A,B)
+
+print("students who play cricket or badminton but not both")
+symm_diff(Cricket,Badminton)
 print()
-print("Students who play only badminton:")
-diff_fun(B,A)
-print()
-print("Students who play both :")
-inter_fun(B,A)
-print()
-print("Students who play both :")
-inter_fun(B,A)
-print()
-print("Students who plays either cricket or badminton but not both")
-symm_diff(A,B)
-print()
-print("Students who play NOthing :")
-diff_fun(U,union_set)
-print()
+
+print("No. of students who play neither cricket not badminton")
+neither_A_nor_B(Cricket,Badminton)
+#can be also done by
+# union_fun(Cricket,Badminton)
+# diff_fun(U,union_set)
+
+print("No. of students who play cricket and football but not badminton")
+A_and_B_not_C(Cricket, Football,Badminton)
+
