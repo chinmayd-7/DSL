@@ -87,6 +87,16 @@ def inter_fun(A,B):
     #         print(A[i],end=',')
     #         i+=1
     #         j+=1
+
+
+def symm_diff(A,B):
+    for i in A:
+        if i not in B:
+            print(i,end=',')
+    for i in B:
+        if i not in A:
+            print(i,end=',')
+
 print("Students who play either crickett or badminton or both:")
 union_fun(A,B)
 print()
@@ -101,6 +111,9 @@ inter_fun(B,A)
 print()
 print("Students who play both :")
 inter_fun(B,A)
+print()
+print("Students who plays either cricket or badminton but not both")
+symm_diff(A,B)
 print()
 print("Students who play NOthing :")
 diff_fun(U,union_set)
