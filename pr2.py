@@ -48,16 +48,21 @@ def highest_freq(marks):
     for i in range(len(marks)):
         if(marks[i]==-1):
             continue
-        curr=marks[i]
-        count=0
-        for j in range(len(marks)):
-            if(marks[j]==-1):
-                continue
-            if(curr==marks[j]):
-                count+=1
-        if(count>freq):
-            freq=count
-            high_freq=curr
+        if(marks.count(i)>freq):
+            freq=marks.count(i)
+            high_freq=i
+            
+        #without count()
+        # curr=marks[i]
+        # count=0
+        # for j in range(len(marks)):
+        #     if(marks[j]==-1):
+        #         continue
+        #     if(curr==marks[j]):
+        #         count+=1
+        # if(count>freq):
+        #     freq=count
+        #     high_freq=curr
     return high_freq
 
 
@@ -74,5 +79,5 @@ if len(marks)>0:
         print("Maximum marks:",maximum)
         print("Minimum marks:",minimum)
         print("Absent students:",absents)
-        print("marks with highest frequency",highest_freq(marks))
+        print("marks with highest frequency:",highest_freq(marks))
 
